@@ -8,6 +8,14 @@ Run all this command from the root directory of your project
 
 ### Init a virtual environnement for python packages
 
+If python virtual env isn't already install
+
+```bash
+sudo apt install python3.10-venv
+```
+
+then
+
 ```bash
 python -m venv init_db/.venv
 source init_db/.venv/bin/activate
