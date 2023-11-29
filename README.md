@@ -15,7 +15,7 @@ source init_db/.venv/bin/activate
 
 ### Install the required pip packages
 
-* `Pip installation`_
+* [Pip installation](https://pip.pypa.io/en/stable/installation/)
 
 ```bash
 pip install -r init_db/requirements.txt
@@ -23,7 +23,7 @@ pip install -r init_db/requirements.txt
 
 ### Install and set PostgreSQL
 
-* `PostgreSQL installation`_
+* [PostgreSQL installation](https://www.postgresql.org/download/)
 
 Login to the database local server as postgres user to create a new user
 
@@ -56,7 +56,7 @@ python init_db/create_db_food.py
 
 ### Install express and prisma client
 
-* `Node_Source installation`_
+* [Node_Source installation](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
 
 ```bash
 npm install express
@@ -90,7 +90,3 @@ npx prisma studio
 ```bash
 npx nodemon app.js
 ```
-
-.. _Pip installation:\conninfo https://pip.pypa.io/en/stable/installation/
-.. _PostgreSQL installation: https://www.postgresql.org/download/
-.. _Node_Source installation: https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
