@@ -1,0 +1,7 @@
+node_modules
+init_db/__pycache__
+init_db/.venv
+init_db/.env
+
+# Keep environment variables out of version control
+.env

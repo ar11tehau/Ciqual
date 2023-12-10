@@ -1,8 +1,11 @@
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
 
+<<<<<<< HEAD
 const PORT = 3001
 
+=======
+>>>>>>> origin/main
 const app = express()
 
 const prisma = new PrismaClient()
@@ -15,7 +18,10 @@ app.set('view engine', 'ejs')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 app.use(express.static("public"))
+=======
+>>>>>>> origin/main
 app.get("/", async function(req, res) {
    const unsorted_names = await prisma.food.findMany({
       select: {
@@ -51,4 +57,8 @@ app.post('/id', async (req, res) => {
    // res.send(nutrient)
 });
 
+<<<<<<< HEAD
 app.listen(3001, () => console.log(`App listening at http://localhost:3001`))
+=======
+app.listen(3000, () => console.log(`App listening at http://localhost:3000`))
+>>>>>>> origin/main

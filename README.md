@@ -8,6 +8,14 @@ Run all this command from the root directory of your project
 
 ### Init a virtual environnement for python packages
 
+If python virtual env isn't already install
+
+```bash
+sudo apt install python3.10-venv
+```
+
+then
+
 ```bash
 python -m venv init_db/.venv
 source init_db/.venv/bin/activate
@@ -54,6 +62,11 @@ The "in.xls" is required
 python init_db/create_db_food.py
 ```
 
+<<<<<<< HEAD
+=======
+Update the "init_db/db_config.py"
+
+>>>>>>> origin/main
 ### Install express and prisma client
 
 * [Node_Source installation](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
