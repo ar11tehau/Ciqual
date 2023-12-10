@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sytles.css">
+    <script src="script.js"></script>
+    <title><%= title %></title>
+</head>
+<body>
+    <form method="POST" action="/id">
+        <label for="food_id" >Id of the searched food :</label>
+        <input type="number" id="food_id" name="id" placeholder="food id">
+        <input type="submit" name="button" value="Submit">
+    </form>
+    <div class="name_id">
+        <p>Name</p>
+        <p>ID</p>
+    </div>
+    <div class="table">
+        <% names.forEach(name => { %>
+                <div class="col">
+                    <p><%= name.name %></p>
+                    <p><%= name.id %></p>
+                </div>
+        <% }); %>
+    </div>
+</body>
+</html>

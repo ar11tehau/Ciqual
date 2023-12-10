@@ -1,0 +1,5 @@
+DB_NAME = 'ciqual'
+DB_USER = 'arii'
+DB_PASSWORD = 'arii'
+DB_HOST = 'localhost'
+DB_PORT = '5432'
