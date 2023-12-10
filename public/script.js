@@ -1,8 +1,8 @@
 function start () {
     const searchInput = document.getElementById('searchInput');
     const suggestions = document.getElementById('suggestions');
-    const apiUrlInput = document.getElementById('apiUrl');
-    const body = document.getElementsByTagName('body')[0]
+    const food_id = document.getElementById('food_id');
+    const body = document.body
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.trim();
@@ -14,43 +14,36 @@ function start () {
     });
 
     function fetchSuggestions(searchTerm) {
-        const apiUrl = `https://geo.api.gouv.fr/communes?nom=${searchTerm}&fields=departement&boost=population&limit=5`;
-        apiUrlInput.value = apiUrl;
+        const apiUrl = `/${searchTerm}`;
+        console.log(apiUrl)
+        food_id.value = apiUrl;
         fetch(apiUrl)
             .then(response => response.json())
-            .then(data => {
-                displaySuggestions(data);
+            .then(suggestionsData => {
+                // console.log(suggestionsData)
+                displaySuggestions(suggestionsData);
             })
             .catch(error => {
                 console.error('Erreur lors de la récupération des suggestions :', error);
             });
     }
 
-    function add(data) {
-        const p = document.createElement("p")
-        p.textContent = data
-        body.append(p)
-
-    }
-
     function displaySuggestions(suggestionsData) {
         suggestions.innerHTML = '';
         suggestions.style.display = 'block';
         
-
         suggestionsData.forEach(suggestion => {
             const option = document.createElement('option');
-            option.value = `${suggestion.nom}, ${suggestion.departement.nom}`;
-            option.textContent = `${suggestion.nom}, ${suggestion.departement.nom}`;
+            option.value = `${suggestion.id}`;
+            option.textContent = `${suggestion.name}`;
             suggestions.appendChild(option);
         });
 
         suggestions.addEventListener("click", function() {
-            const selectedOption = this.options[this.selectedIndex].value; // Obtenir le nom seulement
-            const selectedTrimedOption = this.options[this.selectedIndex].value.split(',')[0];
-            searchInput.value = selectedOption;
-            apiUrlInput.value = selectedTrimedOption; // Réinitialise la valeur de l'input apiUrl
-            add(selectedTrimedOption)
+            const id = this.options[this.selectedIndex].value;
+            const name_text = this.options[this.selectedIndex].textContent
+            searchInput.value = name_text
+            food_id.value = id;
             suggestions.style.display = 'none';
         });
     }

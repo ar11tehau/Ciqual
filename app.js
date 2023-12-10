@@ -29,14 +29,12 @@ app.get("/", async function(req, res) {
       },
    });
    const names = unsorted_names.sort()
-   console.log(unsorted_names.sort())
    res.render("index", { title: "Search food", names }) // render page, whose template is in ./views/index.ejs
 })
 
 
 app.post('/id', async (req, res) => {
-   const food_id = parseInt(req.body.id, 10);
-   console.log(food_id)
+   const food_id = parseInt(req.body.food_id, 10);
 
    const db_food_id = await prisma.food.findUnique({
       where: { id: food_id }
@@ -50,6 +48,27 @@ app.post('/id', async (req, res) => {
 
    res.render("response", {title: "Answer", db_food_id, nutdata, nutrient});
    // res.send(nutrient)
+});
+
+app.get('/:searched', async (req, res) => {
+   const search_name = req.params.searched
+   const db_search_name = await prisma.food.findMany({
+      where: { 
+         name: {
+            contains : search_name,
+            mode: 'insensitive'
+         }
+      },
+      select:{
+         id: true,
+         name: true
+      },
+      orderBy: {
+         name: 'asc'
+       }
+   })
+   // res.render("response", {title: "Answer", db_food_id, nutdata, nutrient});
+   res.send(db_search_name)
 });
 
 app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`))
