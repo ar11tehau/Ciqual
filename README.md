@@ -62,11 +62,8 @@ The "in.xls" is required
 python init_db/create_db_food.py
 ```
 
-<<<<<<< HEAD
-=======
 Update the "init_db/db_config.py"
 
->>>>>>> origin/main
 ### Install express and prisma client
 
 * [Node_Source installation](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
