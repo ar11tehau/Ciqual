@@ -2,10 +2,11 @@ function start () {
     const searchInput = document.getElementById('searchInput');
     const suggestions = document.getElementById('suggestions');
     const food_id = document.getElementById('food_id');
-    const body = document.body
 
     searchInput.addEventListener('input', function() {
+        console.log(this.value)
         const searchTerm = this.value.trim();
+        
         if (searchTerm.length >= 1) {
             fetchSuggestions(searchTerm);
         } else {
@@ -15,7 +16,6 @@ function start () {
 
     function fetchSuggestions(searchTerm) {
         const apiUrl = `/${searchTerm}`;
-        console.log(apiUrl)
         food_id.value = apiUrl;
         fetch(apiUrl)
             .then(response => response.json())
@@ -43,6 +43,7 @@ function start () {
             const id = this.options[this.selectedIndex].value;
             const name_text = this.options[this.selectedIndex].textContent
             searchInput.value = name_text
+            searchInput.style.width = (name_text.length * 6.39) + 'px';
             food_id.value = id;
             suggestions.style.display = 'none';
         });

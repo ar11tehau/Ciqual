@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sytles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <title><%= title %></title>
 </head>
 <body>
     <form method="POST" action="/id">
-        <input type="text" id="searchInput" placeholder="Recherche...">
-        <select id="suggestions" style="display: none;"></select>
+        <div class="searchContainer">
+            <input type="text" id="searchInput" placeholder="Recherche...">
+            <select id="suggestions" style="display: none;"></select>
+        </div>
         <input type="hidden" id="food_id" name="food_id">
         <input type="submit" name="button" value="Submit">
     </form>

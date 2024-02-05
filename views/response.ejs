@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sytles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <title><%= title %></title>
 </head>
 <body>
     <form method="POST" action="/id">
-        <input type="text" id="searchInput" placeholder="Recherche...">
-        <select id="suggestions" style="display: none;"></select>
+        <div class="searchContainer">
+            <input type="text" id="searchInput" placeholder="Recherche...">
+            <select id="suggestions" style="display: none;"></select>
+        </div>
         <input type="hidden" id="food_id" name="food_id">
         <input type="submit" name="button" value="Submit">
     </form>
@@ -18,11 +20,11 @@
         <p><%= db_food_id.name %></p>
     </div>
     <div class="table">
-        <% nutdata.forEach(dict => { %>
+        <% nutrients.forEach(nutrient => { %>
                 <div class="col">
-                    <% const correspondingName = nutrient.find(nameItem => nameItem.id === dict.nutrient_id); %>
-                    <p class="nutrientname"><%= correspondingName.name %></p>
-                    <p><%= dict.value %></p>
+                    <% const correspondingValue = nutdata.find(nutline => nutline.nutrient_id === nutrient.id); %>
+                    <p class="nutrientname"><%= nutrient.name %></p>
+                    <p><%= correspondingValue.value %></p>
                 </div>
         <% }); %>
     </div>

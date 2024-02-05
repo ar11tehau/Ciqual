@@ -34,20 +34,30 @@ app.get("/", async function(req, res) {
 
 
 app.post('/id', async (req, res) => {
-   const food_id = parseInt(req.body.food_id, 10);
+   
+   try {
+      const food_id = parseInt(req.body.food_id, 10);
 
-   const db_food_id = await prisma.food.findUnique({
-      where: { id: food_id }
-   })
+      const db_food_id = await prisma.food.findUnique({
+         where: { id: food_id }
+      })
 
-   const nutdata = await prisma.nutdata.findMany({
-      where: { food_id }
-   })
+      const nutdata = await prisma.nutdata.findMany({
+         where: { food_id }
+      })
 
-   const nutrient = await prisma.nutrient.findMany()
-
-   res.render("response", {title: "Answer", db_food_id, nutdata, nutrient});
-   // res.send(nutrient)
+      const nutrients = await prisma.nutrient.findMany({
+         orderBy: {
+            name: "asc"
+         }
+      })
+      res.render("response", {title: "Answer", db_food_id, nutdata, nutrients});
+   }
+   catch {
+      res.redirect('/');
+   }
+      
+   
 });
 
 app.get('/:searched', async (req, res) => {

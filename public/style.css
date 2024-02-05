@@ -2,17 +2,31 @@ body {
     width: fit-content;
     margin: auto;
 }
+
 .food_name {
     width: 25em;
     text-align: center;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.searchInput {
+    display: block;
+    width: fit-content;
 }
 
 .table {
     display: flex;
     flex-direction: column;
     width: fit-content;
+    margin: auto;
+    border: black solid 1px;
+    padding: 4px;
 }
-
 .col {
     display: flex;
     justify-content: space-between;
